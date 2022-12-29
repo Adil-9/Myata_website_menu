@@ -3,7 +3,7 @@ package main
 import(
 	"net/http"
 	"fmt"
-	"main.go/render"
+	"myata_website_menu/render"
 )
 
 func main() {
