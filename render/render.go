@@ -7,18 +7,15 @@ import(
 )
 
 func Homepage(w http.ResponseWriter, r *http.Request) {
-	// 404 if wrong url path
 	if r.URL.Path != "/" {
 		errorHandler(w, r, http.StatusNotFound)
 		return
 	}
-	// 405 if method not GET
 	if r.Method != http.MethodGet {
 		errorHandler(w, r, http.StatusMethodNotAllowed)
 		return
 	}
 	tmpl, err := template.ParseFiles("webpages/main.html")
-	// 500 if not  able to parse/execute files
 	if err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
