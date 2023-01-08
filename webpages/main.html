@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>W3.CSS Template</title>
+    <title>Myata Restaurant</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,106 +13,49 @@
 <body>
 
     <!-- Navbar (sit on top) -->
-    <div class="">
+    <!-- <div class="">
         <div class="w3-bar w3-xlarge w3-black" id="myNavbar">
             <a href="#" class="w3-bar-item w3-button">HOME</a>
             <a href="#menu" class="w3-bar-item w3-button">MENU</a>
             <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
             <a href="#myMap" class="w3-bar-item w3-button">CONTACT</a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Header with image -->
     <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-        <div class="w3-display-bottomleft w3-padding">
+        <!-- <div class="w3-display-bottomleft w3-padding">
             <span class="w3-tag w3-xlarge">Open from 10am to 12pm</span>
-        </div>
+        </div> -->
         <div class="w3-display-middle w3-center">
             <img src="/static/images/logo.png">
-            <p><a href="#menu" class="w3-button w3-xxlarge w3-black">Let me see the menu</a></p>
+            <p><span class="w3-xxlarge w3-black">Open from 10am to 12pm</span>></p>
         </div>
     </header>
 
     <!-- Menu Container -->
-    <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+    <div class="w3-container w3-white w3-padding-64 w3-xxlarge" id="menu">
         <div class="w3-content">
 
             <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">THE MENU</h1>
-            <div class="w3-row w3-center w3-border w3-border-dark-grey">
-                <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');" id="myLink">
-                    <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pizza</div>
-                </a>
-                <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
-                    <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Salads</div>
-                </a>
-                <a href="javascript:void(0)" onclick="openMenu(event, 'Starter');">
-                    <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Starter</div>
-                </a>
-            </div>
-
-            <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
-                <h1><b>Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
-                <hr>
-
-                <h1><b>Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
-                <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
-                <hr>
-
-                <h1><b>Chicken</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
-                <hr>
-
-                <h1><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$16.50</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
-                <hr>
-
-                <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span
-                        class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
-                <hr>
-
-                <h1><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span
-                        class="w3-right w3-tag w3-dark-grey w3-round">$21.50</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
-            </div>
-
-            <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
-                <h1><b>Lasagna</b> <span class="w3-tag w3-grey w3-round">Popular</span> <span
-                        class="w3-right w3-tag w3-dark-grey w3-round">$13.50</span></h1>
-                <p class="w3-text-grey">Special sauce, mozzarella, parmesan, ground beef</p>
-                <hr>
-
-                <h1><b>Ravioli</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$14.50</span></h1>
-                <p class="w3-text-grey">Ravioli filled with cheese</p>
-                <hr>
-
-                <h1><b>Spaghetti Classica</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$11.00</span></h1>
-                <p class="w3-text-grey">Fresh tomatoes, onions, ground beef</p>
-                <hr>
-
-                <h1><b>Seafood pasta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$25.50</span></h1>
-                <p class="w3-text-grey">Salmon, shrimp, lobster, garlic</p>
-            </div>
-
-
-            <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
-                <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span
-                        class="w3-right w3-tag w3-dark-grey w3-round">$5.50</span></h1>
-                <p class="w3-text-grey">Ask the waiter</p>
-                <hr>
-
-                <h1><b>Bruschetta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$8.50</span></h1>
-                <p class="w3-text-grey">Bread with pesto, tomatoes, onion, garlic</p>
-                <hr>
-
-                <h1><b>Garlic bread</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$9.50</span></h1>
-                <p class="w3-text-grey">Grilled ciabatta, garlic butter, onions</p>
-                <hr>
-
-                <h1><b>Tomozzarella</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$10.50</span></h1>
-                <p class="w3-text-grey">Tomatoes and mozzarella</p>
-            </div><br>
+            
+            <div class="scrollmenu">
+                <a href="#home">Home</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="#support">Support</a>
+                <a href="#blog">Blog</a>
+                <a href="#tools">Tools</a>  
+                <a href="#base">Base</a>
+                <a href="#custom">Custom</a>
+                <a href="#more">More</a>
+                <a href="#logo">Logo</a>
+                <a href="#friends">Friends</a>
+                <a href="#partners">Partners</a>
+                <a href="#people">People</a>
+                <a href="#work">Work</a>
+              </div>
 
         </div>
     </div>
@@ -120,7 +63,7 @@
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
-                class="w3-hover-text-green">w3.css</a></p>
+                class="w3-hover-text-green">Myata company</a></p>
     </footer>
 
     <script src="/static/js/script.js"></script>

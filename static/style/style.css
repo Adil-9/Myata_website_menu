@@ -23,3 +23,17 @@ h6 {
     background-image: url("/w3images/pizza.jpg");
     min-height: 90%;
 }
+
+div.scrollmenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
