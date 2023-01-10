@@ -20,7 +20,6 @@ h6 {
 .bgimg {
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("/w3images/pizza.jpg");
     min-height: 90%;
 }
 
@@ -36,4 +35,8 @@ div.scrollmenu a {
     text-align: center;
     padding: 14px;
     text-decoration: none;
+}
+
+.myata_bg {
+    background-color: #61ede0 !important;
 }

@@ -1,14 +1,7 @@
-function openMenu(evt, menuName) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName("menu");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+function openMenu(evt) {
+    const ts = document.getElementsByClassName("tablink")
+    for (var i = 0; i < ts.length; i++) {
+        ts[i].classList.add("myata_bg`")
     }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < x.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-    }
-    document.getElementById(menuName).style.display = "block";
-    evt.currentTarget.firstElementChild.className += " w3-red";
 }
 document.getElementById("myLink").click();
