@@ -13,6 +13,10 @@ h6 {
     font-family: "Amatic SC", sans-serif
 }
 
+a {
+    cursor: pointer;
+}
+
 .menu {
     display: none
 }
@@ -33,7 +37,6 @@ div.scrollmenu a {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px;
     text-decoration: none;
 }
 
