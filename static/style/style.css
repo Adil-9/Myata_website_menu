@@ -66,3 +66,8 @@ div.scrollmenu a {
 i {
     margin-right: 10px;
 }
+
+#cart {
+    color: white;
+    background-color: black;
+}

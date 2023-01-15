@@ -1,12 +1,18 @@
 package render
 
-import(
-	"text/template"
-	"net/http"
+import (
 	"fmt"
+	"net/http"
+	"text/template"
 )
 
-func Homepage(w http.ResponseWriter, r *http.Request) {
+type Item struct {
+	Dish        string
+	Description string
+	Price       int
+}
+
+func HomePage(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		errorHandler(w, r, http.StatusNotFound)
 		return
@@ -15,7 +21,27 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusMethodNotAllowed)
 		return
 	}
-	tmpl, err := template.ParseFiles("webpages/main.html")
+	tmpl, err := template.ParseFiles("templates/main.html")
+	if err != nil {
+		errorHandler(w, r, http.StatusInternalServerError)
+		return
+	}
+	if err := tmpl.Execute(w, Item{"Dish", "Description", 5000}); err != nil {
+		errorHandler(w, r, http.StatusInternalServerError)
+		return
+	}
+}
+
+func CartPage(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/cart" {
+		errorHandler(w, r, http.StatusNotFound)
+		return
+	}
+	if r.Method != http.MethodGet {
+		errorHandler(w, r, http.StatusMethodNotAllowed)
+		return
+	}
+	tmpl, err := template.ParseFiles("templates/cart.html")
 	if err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return

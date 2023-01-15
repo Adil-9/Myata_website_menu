@@ -1,3 +1,5 @@
+document.getElementById("myLink").click();
+
 function openMenu(event, menuName) {
     const tablinks = document.getElementsByClassName("tablink");
     for (var i = 0; i < tablinks.length; i++) {
@@ -10,18 +12,29 @@ function openMenu(event, menuName) {
     }
     document.getElementById(menuName).style.display = "block"
 }
-document.getElementById("myLink").click();
 
-// window.onscroll = function() {scrollFunction()};
+class item {
+    constructor(name, description, price) {
+        this.name = name
+        this.description = description
+        this.price = price
+    }
+}
 
-// function scrollFunction() {
-//     var menu = document.getElementById("menu")
-//     var empty = document.getElementById("empty")
-//     if (document.body.scrollTop > screen.height*1.235 || document.documentElement.scrollTop > screen.height*1.235) {
-//         menu.classList.add("top")
-//         empty.style.display = "block"
-//     } else {
-//         menu.classList.remove("top")
-//         empty.style.display = "none"
-//     }
-// }   
+var cart = []
+
+document.getElementById("cart-len").innerHTML = cart.length
+
+function cartData(name, description, price, btn) {
+    if(btn.className === "fa-solid fa-square-plus fa-2x") {
+        cart.push(new item(name, description, price))
+        btn.className = "fa-solid fa-square-minus fa-2x"
+        btn.style.color = "red"
+        document.getElementById("cart-len").innerHTML = cart.length
+    } else {
+        cart.pop()
+        btn.className = "fa-solid fa-square-plus fa-2x"
+        btn.style.color = "#61ede0"
+        document.getElementById("cart-len").innerHTML = cart.length
+    }
+}
