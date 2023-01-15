@@ -54,10 +54,8 @@ div.scrollmenu a {
     width: 100%;
 }
 
-.menuItem {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
+.menu-item {
+    display: inline-block;
 }
 
 .item-description {
