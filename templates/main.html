@@ -22,26 +22,23 @@
         text {
             font-size: 18px;
         }
-
-        i {
-            margin-right: 10px;
-        }
     </style>
 </head>
 
 <body>
-    <div class="w3-top w3-bar w3-xlarge w3-black d-flex">
+    <div id="header" class="d-flex to-hide">
         <a href="#home" class="w3-bar-item w3-button">HOME</a>
         <a href="#menu" class="w3-bar-item w3-button">MENU</a>
         <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
         <div class="ms-auto" style="display: inline-block;">
-            <a id="cart" class="w3-bar-item w3-button" href="/cart"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
-                <text id="cart-len"></text></a>
+            <a id="cart" class="w3-bar-item w3-button" onclick="openCart()"><i
+                    class="fa-sharp fa-solid fa-cart-shopping"></i>
+                <text id="cart-len">0</text></a>
         </div>
     </div>
 
     <!-- Header with image -->
-    <header style="margin-bottom: 50px;" class="bgimg w3-display-container w3-grayscale-min">
+    <header style="margin-bottom: 50px;" class="bgimg w3-display-container w3-grayscale-min to-hide">
         <div class="w3-display-middle w3-center">
             <img src="/static/images/logo.png">
             <h6><span class="w3-xxlarge w3-black">Open from 10am to 12pm</span></h6>
@@ -49,16 +46,15 @@
     </header>
 
     <!-- Menu Container -->
-    <div class="w3-container w3-white w3-xxlarge">
+    <div class="w3-container w3-white w3-xxlarge to-hide">
         <h1 style="margin-top: 64px;" class="w3-center w3-jumbo">THE MENU</h1>
     </div>
-    <div class="scrollmenu" id="menu">
+    <div class="scrollmenu to-hide" id="menu">
         <a class="tablink" onclick="openMenu(event, 'SampleMenu');" id="myLink">
             Sample
         </a>
     </div>
-    </div>
-    <div class="menu" id="SampleMenu">
+    <div class="menu to-hide" id="SampleMenu">
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <h1>Sample name</h1>
             <h1>3000 тг</h1>
@@ -66,22 +62,45 @@
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             <i onclick="cartData('{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
-                style="margin-left: 40px; color: #61ede0;" class="fa-solid fa-square-plus fa-2x"></i>
+                style="margin-left: 30px; margin-right: 10px;  color: #61ede0;" class="fa-solid fa-square-plus fa-2x"></i>
+        </div>
+        <div style="margin: 0px 5px;" class="d-flex justify-content-between">
+            <h1>Sample name</h1>
+            <h1>3000 тг</h1>
+        </div>
+        <div style="margin: 0px 5px;" class="d-flex justify-content-between">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <i onclick="cartData('{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
+                style="margin-left: 30px; margin-right: 10px;  color: #61ede0;" class="fa-solid fa-square-plus fa-2x"></i>
         </div>
     </div>
     <!-- Footer -->
-    <footer id="contact" class="w3-black w3-xlarge container">
-        <div class="row" style="align-items: center;">
-            <div style="margin-left: 5px;" class="col">
+    <footer id="contact" class="w3-black w3-xlarge container to-hide">
+        <div class="row d-flex">
+            <div style="margin-left: 0px;" class="col">
                 <h1 style="font-size: 56px;">Follow us</h1>
             </div>
-            <div class="col">
-                <i style="margin-left: 15px;" class="fa-brands fa-instagram fa-xl"></i>
-                <i style="margin-left: 15px;" class="fa-brands fa-whatsapp fa-xl"></i>
-                <i style="margin-left: 15px;" class="fa-sharp fa-solid fa-location-dot fa-xl"></i>
+            <div class="col" style="padding-left: 25px; margin-top: 25px;">
+                <i style="margin-left: 25px;" class="fa-brands fa-instagram fa-xl"></i>
+                <i style="margin-left: 25px;" class="fa-brands fa-whatsapp fa-xl"></i>
+                <i style="margin-left: 25px;" class="fa-sharp fa-solid fa-location-dot fa-xl"></i>
             </div>
         </div>
     </footer>
+
+    <!-- Cart -->
+    <div id="cart-container">
+        <div id="cart-h" class="d-flex justify-content-between">
+            <i onclick="closeCart()" style="margin-top: 25px; margin-left: 5px;"
+                class="fa-sharp fa-solid fa-circle-xmark fa-xl"></i>
+            <div style="margin-right: 5px;" class="ms-auto">
+                <h1>Order cost: 0</h1>
+            </div>
+        </div>
+        <div id="cart-content" style="display: block; margin-top: 50px;">
+
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
