@@ -46,7 +46,7 @@ func CartPage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	if err := tmpl.Execute(w, ""); err != nil {
+	if err := tmpl.Execute(w, Item{"Dish", "Description", 5000}); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}

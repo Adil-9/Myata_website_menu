@@ -38,3 +38,7 @@ function cartData(name, description, price, btn) {
         document.getElementById("cart-len").innerHTML = cart.length
     }
 }
+
+function loadCart() {
+    
+}

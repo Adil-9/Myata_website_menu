@@ -63,10 +63,6 @@ div.scrollmenu a {
     grid-column-end: 3;
 }
 
-i {
-    margin-right: 10px;
-}
-
 #cart {
     color: white;
     background-color: black;

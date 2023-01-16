@@ -14,11 +14,17 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/static/style/style.css">
     <style>
-        text, p {
+        text,
+        p {
             font-family: cursive;
         }
+
         text {
             font-size: 18px;
+        }
+
+        i {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -29,7 +35,8 @@
         <a href="#menu" class="w3-bar-item w3-button">MENU</a>
         <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
         <div class="ms-auto" style="display: inline-block;">
-            <a id="cart" class="w3-bar-item w3-button" href="/cart"><i class="fa-sharp fa-solid fa-cart-shopping"></i> <text id="cart-len"></text></a>
+            <a id="cart" class="w3-bar-item w3-button" href="/cart"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                <text id="cart-len"></text></a>
         </div>
     </div>
 
@@ -58,8 +65,8 @@
         </div>
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <i onclick="cartData('{{.Dish}}', '{{.Description}}', '{{.Price}}', this)" style="margin-left: 40px; color: #61ede0;"
-                class="fa-solid fa-square-plus fa-2x"></i>
+            <i onclick="cartData('{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
+                style="margin-left: 40px; color: #61ede0;" class="fa-solid fa-square-plus fa-2x"></i>
         </div>
     </div>
     <!-- Footer -->
