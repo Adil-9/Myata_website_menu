@@ -7,6 +7,7 @@ import (
 )
 
 type Item struct {
+	Id          int
 	Dish        string
 	Description string
 	Price       int
@@ -26,27 +27,8 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	if err := tmpl.Execute(w, Item{"Dish", "Description", 5000}); err != nil {
-		errorHandler(w, r, http.StatusInternalServerError)
-		return
-	}
-}
-
-func CartPage(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/cart" {
-		errorHandler(w, r, http.StatusNotFound)
-		return
-	}
-	if r.Method != http.MethodGet {
-		errorHandler(w, r, http.StatusMethodNotAllowed)
-		return
-	}
-	tmpl, err := template.ParseFiles("templates/cart.html")
-	if err != nil {
-		errorHandler(w, r, http.StatusInternalServerError)
-		return
-	}
-	if err := tmpl.Execute(w, Item{"Dish", "Description", 5000}); err != nil {
+	arr := []Item{{1, "Dish1", "Description1", 2500}, {2, "Dish2", "Description2", 3350}}
+	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
