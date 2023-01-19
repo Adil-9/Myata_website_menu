@@ -21,8 +21,10 @@
 
         text {
             font-size: 18px;
+            margin-left: 1px;
         }
     </style>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 </head>
 
 <body>
@@ -56,7 +58,7 @@
         {{end}}
     </div>
     {{range .}}
-    <div class="menu to-hide" id="{{.Category}}">
+    <div class="menu to-hide" id="{{.Category}}" style="margin-left: 1%;">
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <h1>{{.Dish}}</h1>
             <h1>{{.Price}} tg</h1>
@@ -70,16 +72,14 @@
     </div>
     {{end}}
     <!-- Footer -->
-    <footer id="contact" class="w3-black w3-xlarge container to-hide">
-        <div class="row d-flex">
-            <div style="margin-left: 0px;" class="col">
-                <h1 style="font-size: 56px;">Follow us</h1>
-            </div>
-            <div class="col" style="padding-left: 25px; margin-top: 25px;">
-                <i style="margin-left: 25px;" class="fa-brands fa-instagram fa-xl"></i>
-                <i style="margin-left: 25px;" class="fa-brands fa-whatsapp fa-xl"></i>
-                <i style="margin-left: 25px;" class="fa-sharp fa-solid fa-location-dot fa-xl"></i>
-            </div>
+    <footer id="contact" class="w3-black w3-xlarge to-hide" style="overflow: auto;">
+        <div style="margin-left: 1%; float: left;">
+            <h1 style="font-size: 56px;">Follow us</h1>
+        </div>
+        <div class="container" style="padding: 26px 1%; float: right; max-width: fit-content;">
+            <i style="margin-left: 25px;" class="fa-brands fa-instagram fa-xl"></i>
+            <i style="margin-left: 25px;" class="fa-brands fa-whatsapp fa-xl"></i>
+            <i style="margin-left: 25px;" class="fa-sharp fa-solid fa-location-dot fa-xl"></i>
         </div>
     </footer>
 
