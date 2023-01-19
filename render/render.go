@@ -11,6 +11,7 @@ type Item struct {
 	Dish        string
 	Description string
 	Price       int
+	Category    string
 }
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +28,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	arr := []Item{{1, "Dish1", "Description1", 2500}, {2, "Dish2", "Description2", 3350}}
+	arr := []Item{{1, "Ceasar", "anchovies, olive oil, lemon juice, egg, and Parmesan cheese, garnished with croutons", 1750, "Salads"}, {2, "Margarita", "tomatoes, mozzarella cheese, garlic, fresh basil, and extra-virgin olive oil", 2950, "Pizzas"}}
 	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return

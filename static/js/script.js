@@ -1,11 +1,11 @@
-document.getElementById("myLink").click();
+document.getElementsByClassName("tablink")[0].click()
 
 function openMenu(event, menuName) {
     const tablinks = document.getElementsByClassName("tablink");
     for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("myata_bg");
+        tablinks[i].classList.remove("myata-bg");
     }
-    event.target.classList.add("myata_bg")
+    event.target.classList.add("myata-bg")
     const menus = document.getElementsByClassName("menu")
     for (var i = 0; i < menus.length; i++) {
         menus[i].style.display = "none"
@@ -35,12 +35,13 @@ var cid = "a"
 var costTotal = 0
 
 function cartData(id, name, description, price, btn) {
-    if(btn.className === "fa-solid fa-square-plus fa-2x") {
+    if(btn.classList.contains("fa-square-plus")) {
         cart.push(new item(id, name, description, price, 1))
-        btn.className = "fa-solid fa-square-minus fa-2x"
+        btn.classList.remove("fa-square-plus")
+        btn.classList.add("fa-square-minus")
         btn.style.color = "red"
         document.getElementById("cart-len").innerHTML = cart.length
-        var t = template.replace("SampleName", name).replace("SamplePrice", price + " тг").replaceAll("SampleId", id).replaceAll("CountId", cid)
+        var t = template.replace("SampleName", name).replace("SamplePrice", price + " tg").replaceAll("SampleId", id).replaceAll("CountId", cid)
         target.insertAdjacentHTML("beforeend", t.replace("SampleDescription", description))
         cid += "a"
         for (let i = 0; i < cart.length; i++) {
@@ -57,12 +58,13 @@ function cartData(id, name, description, price, btn) {
                 break
             }
         }
-        btn.className = "fa-solid fa-square-plus fa-2x"
+        btn.classList.remove("fa-square-minus")
+        btn.classList.add("fa-square-plus")
         btn.style.color = "#61ede0"
         document.getElementById("cart-len").innerHTML = cart.length
         document.getElementById(id).remove()
     }
-    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " тг"
+    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " tg"
 }
 
 function openCart() {
@@ -78,6 +80,13 @@ function closeCart() {
         element.style.display = "block";
     }
     document.getElementById("cart-container").style.display = "none"
+    var tablinks = document.getElementsByClassName("tablink")
+    for (let i = 0; i < tablinks.length; i++) {
+        if (tablinks[i].classList.contains("myata-bg")) {
+            tablinks[i].click()
+            return
+        }
+    }
 }
 
 function incrementCount(cid, id) {
@@ -89,7 +98,7 @@ function incrementCount(cid, id) {
             break
         }
     }
-    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " тг"
+    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " tg"
 }
 
 function decrementCount(cid, id) {
@@ -105,7 +114,10 @@ function decrementCount(cid, id) {
             }
         }
         document.getElementById("cart-len").innerHTML = cart.length
-        document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " тг"
+        document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " tg"
+        document.getElementsByClassName(id)[0].classList.remove("fa-square-minus")
+        document.getElementsByClassName(id)[0].classList.add("fa-square-plus")
+        document.getElementsByClassName(id)[0].style.color = "#61ede0"
         return
     }
     document.getElementById(cid).innerHTML = num
@@ -115,5 +127,5 @@ function decrementCount(cid, id) {
             break
         }
     }
-    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " тг"
+    document.getElementById("cost-total").innerHTML = "Total: " + costTotal + " tg"
 }
