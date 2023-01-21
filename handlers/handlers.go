@@ -34,8 +34,8 @@ var data []Item = []Item{
 	{12, "Carbonara", "spaghetti with a cream-based sauce with ham or pancetta", 2490, "Pasta"},
 }
 
-func getData(count int) []Items {
-	items := make([]Items, count)
+func getData(data []Item, count int) []Items {
+	items := make([]Items, count+1)
 	for i := 0; i < len(data); i++ {
 		for j := i; j > 0 && data[j-1].Category > data[j].Category; j-- {
 			data[j], data[j-1] = data[j-1], data[j]
@@ -66,7 +66,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	arr := getData(5)
+	arr := getData(data, 4)
 	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
