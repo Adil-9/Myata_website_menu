@@ -24,20 +24,12 @@ type Position struct {
 	Category    string
 }
 
-// type Item struct {
-// 	Id          int
-// 	Dish        string
-// 	Description string
-// 	Price       int
-// 	Category    string
-// }
-
 type Items struct {
 	Category string
 	Dishes   []Position
 }
 
-// var data []Item = []Item{
+// var sampleData []Position = []Position{
 // 	{1, "Ceasar", "anchovies, olive oil, lemon juice, egg, and Parmesan cheese, garnished with croutons", 1750, "Salads"},
 // 	{2, "Caprese", "Sliced mozzarella. Sliced tomatoes. Sweet basil. Olive oil. Salt.", 1250, "Salads"},
 // 	{3, "Cobb", "Chopped salad greens, tomato, crispy bacon, chicken breast, hard-boiled eggs, avocado, chives, Roquefort cheese and red wine vinaigrette.", 950, "Salads"},
@@ -84,7 +76,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	arr := getData(data(), 3)
+	arr := getData(data(), 5)
 	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return

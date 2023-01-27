@@ -19,6 +19,7 @@ class item {
         this.name = name
         this.description = description
         this.price = price
+        this.count = count
     }
 }
 
@@ -53,7 +54,7 @@ function cartData(id, name, description, price, btn) {
     } else {
         for (let i = 0; i < cart.length; i++) {
             if (cart[i].id == id) {
-                costTotal -= Number(cart[i].price)
+                costTotal -= Number(cart[i].price) * Number(cart[i].count)
                 cart.splice(i, 1)
                 break
             }
@@ -95,6 +96,7 @@ function incrementCount(cid, id) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].id == id) {
             costTotal += Number(cart[i].price)
+            cart[i].count += 1
             break
         }
     }
@@ -124,6 +126,7 @@ function decrementCount(cid, id) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].id == id) {
             costTotal -= Number(cart[i].price)
+            cart[i].count -= 1
             break
         }
     }

@@ -19,7 +19,7 @@ func main() {
 	r.Handle("/delete/{id}", http.HandlerFunc(handlers.Delete))
 	r.Handle("/check-login", http.HandlerFunc(handlers.Check_login))
 	r.Handle("/login", http.HandlerFunc(handlers.Login))
-	fmt.Println("Server running on: http://localhost:8080")
+	fmt.Println("Server running on: http://localhost:8000")
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
-	http.ListenAndServe(":8080", r)
+	http.ListenAndServe(":8000", r)
 }
