@@ -44,6 +44,7 @@ main {
     margin-bottom: 30px;
     padding: 20px;
     max-width: 400px;
+    min-width: 300px
 }
 
 .colm-form .form-container input, .colm-form .form-container .btn-login {

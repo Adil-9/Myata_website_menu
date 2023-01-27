@@ -76,7 +76,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	arr := getData(data(), 5)
+	arr := getData(data(), 3)
 	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
