@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.input-data {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
+#div {
+    box-sizing: border-box;
+    padding-right: 10%;
+    padding-top: 3%;
+}
+
+#description {
+    min-width: 25%;
+    max-width: 25%;
+    min-height: 10vh;
+    max-height: 10vh;
+}
+
+input {
+    width: 19%;
+    height: 35;
+}
+
+button {
+    width: 85px;
+    height: 25px;
+}
+
+table,
+td,
+th {
+    border: 1px solid;
+}
+
+table {
+    margin-right: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#menu {
+    background-color: aqua;
+    position: absolute;
+    top: 0;
+    
+}
+
+#admin-panel {
+    background-color: rgb(172, 172, 172);
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+}
