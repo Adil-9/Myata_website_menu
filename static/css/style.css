@@ -80,3 +80,31 @@ div.scrollmenu a {
 .empty {
     display: none;
 }
+
+.admin-menu {
+    margin: 10px 10px;
+    width: 31%;
+}
+
+.admin-btn {
+    width: 60px;
+    height: 25px;
+    margin-left: 10px;
+    padding: 0 0;
+}
+
+@media only screen and (max-width: 950px) {
+    .admin-menu {
+        width: 100%;
+    }
+}
+
+.add-btn {
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    margin: 15px 15px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}

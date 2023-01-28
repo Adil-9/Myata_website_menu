@@ -29,21 +29,6 @@ type Items struct {
 	Dishes   []Position
 }
 
-// var sampleData []Position = []Position{
-// 	{1, "Ceasar", "anchovies, olive oil, lemon juice, egg, and Parmesan cheese, garnished with croutons", 1750, "Salads"},
-// 	{2, "Caprese", "Sliced mozzarella. Sliced tomatoes. Sweet basil. Olive oil. Salt.", 1250, "Salads"},
-// 	{3, "Cobb", "Chopped salad greens, tomato, crispy bacon, chicken breast, hard-boiled eggs, avocado, chives, Roquefort cheese and red wine vinaigrette.", 950, "Salads"},
-// 	{4, "Margarita", "tomatoes, mozzarella cheese, garlic, fresh basil, and extra-virgin olive oil", 2950, "Pizzas"},
-// 	{5, "Sicilian", "dough topped with mozzarella cheese and tomato sauce.", 2350, "Pizzas"},
-// 	{6, "Quattro formaggi", "topped with a combination of four kinds of cheese", 3150, "Pizzas"},
-// 	{7, "Gazpacho", "tomatoes, garlic, onions, pepper and olive oil", 1750, "Soups"},
-// 	{8, "Tom Yum", "several spices and herbs, including lemongrass, galangal and kaffir lime leaves.", 2150, "Soups"},
-// 	{9, "Ramen", "broth based on chicken, seasoned with taré and served with pasta", 1450, "Soups"},
-// 	{10, "Bolognese", "spaghetti and a sauce made of minced beef, tomatoes, onion, bacon, red wine and herbs", 2390, "Pasta"},
-// 	{11, "Fettuccine Alfredo", "fettuccine (flat pasta ribbons) tossed with parmesan cheese and butter.", 2290, "Pasta"},
-// 	{12, "Carbonara", "spaghetti with a cream-based sauce with ham or pancetta", 2490, "Pasta"},
-// }
-
 func getData(data []Position, count int) []Items {
 	items := make([]Items, count+1)
 	for i := 0; i < len(data); i++ {
@@ -76,11 +61,35 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
-	arr := getData(data(), 3)
+	arr := getData(data(), count())
 	if err := tmpl.Execute(w, arr); err != nil {
 		errorHandler(w, r, http.StatusInternalServerError)
 		return
 	}
+}
+
+func count() int {
+	db, err := sql.Open("sqlite3", "./menu.db")
+	if err != nil {
+		fmt.Println("No database found")
+		// panic(err)
+	}
+	defer db.Close()
+	row, err := db.Query("SELECT COUNT(DISTINCT category) FROM menu")
+	if err != nil {
+		fmt.Println("Error getting data from database")
+		// panic(err)
+	}
+	defer row.Close()
+	count := 0
+	for row.Next() {
+		var err = row.Scan(&count)
+		if err != nil {
+			fmt.Println("Error scanning data from database")
+			// panic(err)
+		}
+	}
+	return count
 }
 
 func data() []Position {
@@ -529,32 +538,6 @@ func redo_id() {
 	// fmt.Println("END OF REDOING Id")
 }
 
-// func create_table() {
-
-// 	// Open database connection
-// 	db, err := sql.Open("sqlite3", "./menu.db")
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	defer db.Close()
-
-// 	// Create the table
-// 	sqlStmt := `
-// 	CREATE TABLE IF NOT EXISTS menu (
-// 		id INTEGER PRIMARY KEY,
-// 		price INTEGER,
-// 		dish TEXT,
-// 		description TEXT,
-// 		category TEXT
-// 	);`
-// 	_, err = db.Exec(sqlStmt)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-
-// 	fmt.Println("Table created successfully")
-// }
-
 func create_admin() {
 	// Open database connection
 	db, err := sql.Open("sqlite3", "./admin.db")
@@ -592,3 +575,43 @@ func create_admin() {
 	}
 	stmt.Exec(login, hash)
 }
+
+// var sampleData []Position = []Position{
+// 	{1, "Ceasar", "anchovies, olive oil, lemon juice, egg, and Parmesan cheese, garnished with croutons", 1750, "Salads"},
+// 	{2, "Caprese", "Sliced mozzarella. Sliced tomatoes. Sweet basil. Olive oil. Salt.", 1250, "Salads"},
+// 	{3, "Cobb", "Chopped salad greens, tomato, crispy bacon, chicken breast, hard-boiled eggs, avocado, chives.", 950, "Salads"},
+// 	{4, "Margarita", "tomatoes, mozzarella cheese, garlic, fresh basil, and extra-virgin olive oil", 2950, "Pizzas"},
+// 	{5, "Sicilian", "dough topped with mozzarella cheese and tomato sauce.", 2350, "Pizzas"},
+// 	{6, "Quattro formaggi", "topped with a combination of four kinds of cheese", 3150, "Pizzas"},
+// 	{7, "Gazpacho", "tomatoes, garlic, onions, pepper and olive oil", 1750, "Soups"},
+// 	{8, "Tom Yum", "several spices and herbs, including lemongrass, galangal and kaffir lime leaves.", 2150, "Soups"},
+// 	{9, "Ramen", "broth based on chicken, seasoned with taré and served with pasta", 1450, "Soups"},
+// 	{10, "Bolognese", "spaghetti and a sauce made of minced beef, tomatoes, onion, bacon, red wine and herbs", 2390, "Pasta"},
+// 	{11, "Fettuccine Alfredo", "fettuccine (flat pasta ribbons) tossed with parmesan cheese and butter.", 2290, "Pasta"},
+// 	{12, "Carbonara", "spaghetti with a cream-based sauce with ham or pancetta", 2490, "Pasta"},
+// }
+
+// func create_table() {
+// 	// Open database connection
+// 	db, err := sql.Open("sqlite3", "./menu.db")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	defer db.Close()
+
+// 	// Create the table
+// 	sqlStmt := `
+// 	CREATE TABLE IF NOT EXISTS menu (
+// 		id INTEGER PRIMARY KEY,
+// 		price INTEGER,
+// 		dish TEXT,
+// 		description TEXT,
+// 		category TEXT
+// 	);`
+// 	_, err = db.Exec(sqlStmt)
+// 	if err != nil {
+// 		panic(err)
+// 	}
+
+// 	fmt.Println("Table created successfully")
+// }
