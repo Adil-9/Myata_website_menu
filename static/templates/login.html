@@ -6,25 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/edit.css" type="text/css">
-    </head>
+</head>
 
 <body>
-    <main>
-        <div class="row">
-            <div class="colm-form">
-                <div class="form-container">
-                    <form action="/check-login" method="post" id="form-change">
-                        <h3><label for="login">Name</label></h3>
-                        <input type="text" placeholder="LOGIN" id="login" name="login" required><br><br>
+    <div id="login-form">
+        <div class="colm-form" style="text-align: center;">
+            <div class="form-container">
+                <form action="/check-login" method="post" id="form-change">
+                    <h3><label for="login">Name</label></h3>
+                    <input type="text" placeholder="LOGIN" id="login" name="login" required><br><br>
 
-                        <h3><label for="password">Password</label></h3>
-                        <input type="password" placeholder="password" id="password" name="password" required><br><br>
-                        <button class="btn-login" form="form-change">Log in</button>
-                    </form>
-                </div>
+                    <h3><label for="password">Password</label></h3>
+                    <input type="password" placeholder="password" id="password" name="password" required><br><br>
+                    <button class="btn-login" form="form-change">Log in</button>
+                </form>
             </div>
         </div>
-    </main>
+    </div>  
 </body>
 
 </html>
