@@ -99,6 +99,12 @@ div.scrollmenu a {
     }
 }
 
+@media only screen and (max-height: 500px) {
+    #logo-img {
+        margin-top: 150px;
+    }
+}
+
 .add-btn {
     bottom: 0;
     right: 0;
