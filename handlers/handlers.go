@@ -196,6 +196,13 @@ func Check_login(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func Logout(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "admin")
+	delete(session.Values, "UserID")
+	session.Save(r, w)
+	http.Redirect(w, r, "login", http.StatusSeeOther)
+}
+
 func Editing(w http.ResponseWriter, r *http.Request) {
 
 	sessions, _ := store.Get(r, "admin")
@@ -298,15 +305,12 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		desc := r.Form.Get("description")
 		categ := r.Form.Get("category")
 
-		if price == 0 || dish == "" || desc == "" || categ == "" {
+		if price == 0 || dish == "" || categ == "" {
 			if price == 0 {
 				fmt.Println("price is not passed")
 			}
 			if dish == "" {
 				fmt.Println("dish is not passed")
-			}
-			if desc == "" {
-				fmt.Println("decsription is not passed")
 			}
 			if categ == "" {
 				fmt.Println("categ is not passed")

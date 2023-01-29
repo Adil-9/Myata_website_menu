@@ -27,34 +27,48 @@
             font-size: 7vh;
             color: #61ede0;
         }
+
+        i:hover {
+            color: #4ab6ab;
+        }
     </style>
 </head>
 
-<body class="container-fluid">
-    <div class="row" style="margin: 0 5px; margin-top: 20px;">
-        {{range .}}
-        <div class="admin-menu card">
-            <div class="card-header d-flex justify-content-between"
-                style="padding: 0 2px; background-color: inherit; padding-top: 8px;">
-                <h1>{{.Dish}}</h1>
-                <div class="d-flex align-items-center">
-                    <form action="/edit/{{.Id}}" method="post">
-                        <button class="btn btn-warning admin-btn"><text>Edit</text></button>
-                    </form>
-                    <form action="/delete/{{.Id}}" method="post">
-                        <button class="btn btn-danger admin-btn"><text>Delete</text></button>
-                    </form>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/editing" style="margin-left: 25px;">
+            <h1>Admin panel</h1>
+        </a>
+        <a class="navbar-brand ms-auto" href="/logout" style="margin-right: 25px;">
+            <h1>Logout</h1>
+        </a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row" style="margin: 0 5px; margin-top: 20px;">
+            {{range .}}
+            <div class="admin-menu card">
+                <div class="card-header d-flex justify-content-between"
+                    style="padding: 0 2px; background-color: inherit; padding-top: 8px;">
+                    <h1>{{.Dish}}</h1>
+                    <div class="d-flex align-items-center">
+                        <form action="/edit/{{.Id}}" method="post">
+                            <button class="btn btn-warning admin-btn"><text>Edit</text></button>
+                        </form>
+                        <form action="/delete/{{.Id}}" method="post">
+                            <button class="btn btn-danger admin-btn"><text>Delete</text></button>
+                        </form>
+                    </div>
+                </div>
+                <div style="margin: 0px 5px;" class="d-flex justify-content-between">
+                    <h1>Category: {{.Category}}</h1>
+                    <h1>{{.Price}}tg</h1>
+                </div>
+                <div style="margin: 0px 5px;" class="d-flex justify-content-between">
+                    <p>{{.Description}}</p>
                 </div>
             </div>
-            <div style="margin: 0px 5px;" class="d-flex justify-content-between">
-                <h1>Category: {{.Category}}</h1>
-                <h1>{{.Price}}tg</h1>
-            </div>
-            <div style="margin: 0px 5px;" class="d-flex justify-content-between">
-                <p>{{.Description}}</p>
-            </div>
+            {{end}}
         </div>
-        {{end}}
     </div>
     <form action="/insertion-page" method="post">
         <button class="add-btn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
