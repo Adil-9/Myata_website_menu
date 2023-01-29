@@ -58,7 +58,7 @@
         {{end}}
     </div>
     {{range .}}
-    <div class="menu to-hide" id="{{.Category}}" style="margin-left: 1%;">
+    <div class="menu to-hide" id="{{.Category}}" style="margin-left: 1%; margin-bottom: 15px;">
         {{range .Dishes}}
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <h1>{{.Dish}}</h1>
@@ -67,7 +67,7 @@
         <div style="margin: 0px 5px;" class="d-flex justify-content-between">
             <p>{{.Description}}</p>
             <i onclick="cartData('{{.Id}}','{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
-                style="margin-left: 30px; margin-right: 10px;  color: #61ede0;"
+                style="margin-left: 30px; margin-right: 10px; color: #61ede0;"
                 class="fa-solid fa-square-plus fa-2x {{.Id}}"></i>
         </div>
         {{end}}
