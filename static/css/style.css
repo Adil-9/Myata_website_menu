@@ -69,12 +69,10 @@ div.scrollmenu a {
     background-color: black;
     font-size: x-large;
     color: white;
-    height: 52.109px;
     position: fixed;
     width: 100%;
     z-index: 100;
     top: 0;
-    left: 0;
 }
 
 .empty {
@@ -99,12 +97,6 @@ div.scrollmenu a {
     }
 }
 
-@media only screen and (max-height: 500px) {
-    #logo-img {
-        margin-top: 150px;
-    }
-}
-
 .add-btn {
     bottom: 0;
     right: 0;
@@ -113,4 +105,17 @@ div.scrollmenu a {
     border: none;
     background-color: rgb(255, 255, 255);
     border-radius: 50px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000   ;
+    left: 0;
+    top: 5%;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
 }

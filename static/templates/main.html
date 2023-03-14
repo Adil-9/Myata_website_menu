@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -29,27 +28,29 @@
 
 <body>
     <div id="header" class="d-flex to-hide">
-        <a href="#menu" class="w3-bar-item w3-button">MENU</a>
-        <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
-        <div class="ms-auto" style="display: inline-block;">
-            <a id="cart" class="w3-bar-item w3-button" onclick="openCart()"><i
-                    class="fa-sharp fa-solid fa-cart-shopping"></i>
+        <a class="nav-link" style="font-size: 28px; padding: 5px 10px;" href="#menu">MENU</a>
+        <a class="nav-link" style="font-size: 28px; padding: 5px 10px;" href="#contact">CONTACT</a>
+        <div class="ms-auto" style="display: inline-block; margin: 7px 10px;">
+            <a id="cart" onclick="openCart()"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
                 <text id="cart-len">0</text></a>
         </div>
     </div>
-
-    <header style="margin-bottom: 50px;" class="bgimg w3-display-container w3-grayscale-min to-hide">
-        <div class="w3-display-middle w3-center">
-            <img id="logo-img" src="/static/images/logo.png">
-            <h6><span class="w3-xxlarge w3-black">Open from 10am to 12pm</span></h6>
+    <div class="to-hide">
+        <div class="bgimg d-flex justify-content-center" style="margin-bottom: 50px;">
+            <div style="margin: 225px;">
+                <img id="logo-img" src="../static/images/logo.png">
+                <h1 class="d-flex justify-content-center" style="margin-top: 15px;"><span
+                        style="background-color: black; color: white; padding: 5px 5px;">Open from 10am to 12pm</span>
+                </h1>
+            </div>
         </div>
-    </header>
+    </div>
 
     <!-- Menu Container -->
-    <div class="w3-container w3-white w3-xxlarge to-hide">
-        <h1 style="margin-top: 64px;" class="w3-center w3-jumbo">THE MENU</h1>
+    <div class="to-hide">
+        <h1 style="font-size: 64px;" class="d-flex justify-content-center">THE MENU</h1>
     </div>
-    <div class="scrollmenu to-hide" id="menu">
+    <div class="scrollmenu to-hide" id="menu" style="margin-top: 25px;">
         {{range .}}
         <a class="tablink" onclick="openMenu(event, '{{.Category}}');">
             {{.Category}}
@@ -57,27 +58,44 @@
         {{end}}
     </div>
     {{range .}}
-    <div class="menu to-hide" id="{{.Category}}" style="margin-left: 1%; margin-bottom: 15px;">
-        {{range .Dishes}}
-        <div style="margin: 0px 5px;" class="d-flex justify-content-between">
-            <h1>{{.Dish}}</h1>
-            <h1>{{.Price}}tg</h1>
+    <div class="menu to-hide container" id="{{.Category}}">
+        <div class="row">
+            {{range .Dishes}}
+            <div class="card col-sm-6 mx-auto"
+                style="padding: 0 0; border-radius: 0; margin: 5px 5px; width: fit-content;">
+                <img src="https://media.istockphoto.com/id/1311321054/photo/rosted-potato-side-dish.jpg?s=612x612&w=0&k=20&c=_eBrdR5gMq6rMLU6H6aK54I3b_G7s9JSiP4BldvlyJw="
+                    width="175px" height="175px" onclick="openModal('{{.Id}}modal')" />
+                <div class="card-body">
+                    <p class="card-text">{{.Dish}}</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text">{{.Price}}tg</p>
+                        <i onclick="cartData('{{.Id}}','{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
+                            style="color: #61ede0;" class="fa-solid fa-square-plus fa-2x {{.Id}}"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="{{.Id}}modal">
+                <div class="card" style="border: 0; border-radius: 0;">
+                    <img src="https://media.istockphoto.com/id/1311321054/photo/rosted-potato-side-dish.jpg?s=612x612&w=0&k=20&c=_eBrdR5gMq6rMLU6H6aK54I3b_G7s9JSiP4BldvlyJw="
+                        class="img-fluid" width="100%" />
+                    <div class="card-body">
+                        <h1 style="font-size: 36px;" class="card-title">{{.Dish}}</h1>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text">{{.Description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{end}}
         </div>
-        <div style="margin: 0px 5px;" class="d-flex justify-content-between">
-            <p>{{.Description}}</p>
-            <i onclick="cartData('{{.Id}}','{{.Dish}}', '{{.Description}}', '{{.Price}}', this)"
-                style="margin-left: 30px; margin-right: 10px; color: #61ede0;"
-                class="fa-solid fa-square-plus fa-2x {{.Id}}"></i>
-        </div>
-        {{end}}
     </div>
     {{end}}
     <!-- Footer -->
-    <footer id="contact" class="w3-black w3-xlarge to-hide" style="overflow: auto;">
+    <footer id="contact" class="to-hide" style="overflow: auto; background-color: black; color: white;">
         <div style="margin-left: 1%; float: left;">
-            <h1 style="font-size: 56px;">Follow us</h1>
+            <h1 style="font-size: 56px; margin: 0 0;">Follow us</h1>
         </div>
-        <div class="container" style="padding: 26px 0%; float: right; max-width: fit-content; margin-right: 2%;">
+        <div class="container" style="padding: 25px 0%; float: right; max-width: fit-content; margin-right: 2%;">
             <i style="margin-left: 25px;" class="fa-brands fa-instagram fa-xl"></i>
             <i style="margin-left: 25px;" class="fa-brands fa-whatsapp fa-xl"></i>
             <i style="margin-left: 25px;" class="fa-sharp fa-solid fa-location-dot fa-xl"></i>
@@ -89,11 +107,11 @@
         <div id="cart-h" class="d-flex justify-content-between">
             <i onclick="closeCart()" style="margin-top: 30px; margin-left: 10px; padding-bottom: 15px;"
                 class="fa-sharp fa-solid fa-xmark fa-xl"></i>
-            <div style="margin-right: 5px;" class="ms-auto">
+            <div style="margin-right: 5px; margin-top: 12px;" class="ms-auto">
                 <h1 id="cost-total">Total: 0tg</h1>
             </div>
         </div>
-        <div id="cart-content" style="display: block; margin-top: 50px;">
+        <div id="cart-content" style="display: block; margin-top: 60px;">
 
         </div>
     </div>
@@ -101,6 +119,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="/static/js/script.js"></script>
+
 
 </body>
 
