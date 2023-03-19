@@ -61,10 +61,10 @@
     <div class="menu to-hide container" id="{{.Category}}">
         <div class="row">
             {{range .Dishes}}
-            <div class="card col-sm-6 mx-auto"
-                style="padding: 0 0; border-radius: 0; margin: 5px 5px; width: fit-content;">
+            <div class="card col-sm-6 mx-auto" style="padding: 0 0; margin: 5px 5px; width: fit-content;">
                 <img src="https://media.istockphoto.com/id/1311321054/photo/rosted-potato-side-dish.jpg?s=612x612&w=0&k=20&c=_eBrdR5gMq6rMLU6H6aK54I3b_G7s9JSiP4BldvlyJw="
-                    width="175px" height="175px" onclick="openModal('{{.Id}}modal')" />
+                    width="175px" height="175px" onclick="openModal('{{.Id}}modal')"
+                    style="border-radius: 5px 5px 0 0;" />
                 <div class="card-body">
                     <p class="card-text">{{.Dish}}</p>
                     <div class="d-flex justify-content-between">
@@ -75,9 +75,10 @@
                 </div>
             </div>
             <div class="modal" id="{{.Id}}modal">
-                <div class="card" style="border: 0; border-radius: 0; max-width: 500px;">
+                <span class="close" onclick="closeM('{{.Id}}modal')">&times;</span>
+                <div class="card" style="max-width: 500px;">
                     <img src="https://media.istockphoto.com/id/1311321054/photo/rosted-potato-side-dish.jpg?s=612x612&w=0&k=20&c=_eBrdR5gMq6rMLU6H6aK54I3b_G7s9JSiP4BldvlyJw="
-                        width="100%" style="max-width: 500px;"/>
+                        width="100%" style="max-width: 500px; border-radius: 5px 5px 0 0;" />
                     <div class="card-body">
                         <h1 style="font-size: 36px;" class="card-title">{{.Dish}}</h1>
                         <div class="d-flex justify-content-between">

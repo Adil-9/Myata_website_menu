@@ -147,14 +147,20 @@ function decrementCount(cid, id) {
 
 function openModal(id) {
   document.getElementById(id).style.display = "block";
-  document.getElementById("header").style.color = "grey"
+  document.getElementById("header").style.color = "grey";
   document.getElementById("cart").style.color = "grey";
 }
 
 window.onclick = function (event) {
   if (event.target.classList.contains("modal")) {
-    event.target.style.display = "none"
+    event.target.style.display = "none";
     document.getElementById("header").style.color = "white";
     document.getElementById("cart").style.color = "white";
   }
+};
+
+const closeM = (id) => {
+  document.getElementById(id).style.display = "none";
+  document.getElementById("header").style.color = "white";
+  document.getElementById("cart").style.color = "white";
 };
